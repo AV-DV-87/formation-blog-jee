@@ -9,25 +9,7 @@ import fr.gtm.blog.domain.Article;
 
 public class ArticleService {
 
-	// Début implémentation Design Pattern Singleton -> Classe n'ayant qu'une
-	// seule et unique instance.
-
-	private static ArticleService INSTANCE;
-
-	public static ArticleService getSingleton() {
-		return ArticleService.INSTANCE;
-	}
-
-	public static void prepareSingleton(int idCount)
-			throws UnsupportedOperationException {
-		if (ArticleService.INSTANCE == null) {
-			ArticleService.INSTANCE = new ArticleService(idCount);
-		} else {
-			throw new UnsupportedOperationException();
-		}
-	}
-
-	// Fin implémentation Singleton.
+	// TODO : à supprimer quand vrai BDD
 
 	private static final List<Article> MOCK_ARTICLES = Collections
 			.unmodifiableList(Arrays.asList(
@@ -37,6 +19,8 @@ public class ArticleService {
 
 	private int idCount;
 	private final List<Article> articles;
+	
+	
 
 	public ArticleService(int idCount) {
 		this.idCount = idCount;

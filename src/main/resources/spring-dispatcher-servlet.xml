@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- déclaration d'un container de beans léger -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+        
+        <context:component-scan base-package="fr.gtm.blog.web" />
+
+	<!--     <bean id="..." class="...">
+        collaborators and configuration for this bean go here
+    </bean>
+
+    <bean id="..." class="...">
+        collaborators and configuration for this bean go here
+    </bean>
+
+    more bean definitions go here -->
+    
+    
+    <!-- Déclaration d'un bean scope par défaut donc singleton permettant
+    d'injecter une instance du service unique qui manipule les objets d'articles
+    partout où nous en avons besoin (@Autowired) -->
+    <bean id ="articleService" class="fr.gtm.blog.business.ArticleService">
+    	<!-- remplace la valeure d'initialisation de la servlet pour le constructeur ArticleService -->
+    	<constructor-arg>
+    		<value>3</value>
+    	</constructor-arg>
+    </bean>
+    
+
+</beans>
