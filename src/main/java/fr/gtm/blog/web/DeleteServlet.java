@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import fr.gtm.blog.business.ArticleService;
+import fr.gtm.blog.business.CrudService;
 
 public class DeleteServlet extends AutowiredServlet {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Autowired
-	private ArticleService service;
+	private CrudService service;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)

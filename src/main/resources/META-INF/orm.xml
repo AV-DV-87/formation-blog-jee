@@ -8,6 +8,7 @@
 	xmlns="http://java.sun.com/xml/ns/persistence/orm"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
+	
 	<!-- correspondance SQL -->
 	<entity class="fr.gtm.blog.domain.Article">
 		<table name="Article" />
@@ -18,9 +19,40 @@
 			</id>
 			<basic name="title"/>
 			<basic name="description"/>
-						
+			<many-to-one name="author">
+				<join-column name="author_id" referenced-column-name="id"/>
+			</many-to-one>	
 		</attributes>
 		
 	</entity>
 	
+	<entity class="fr.gtm.blog.domain.Author">
+		<attributes>
+			<id name="id">
+				<generated-value strategy="IDENTITY"/>
+			</id>
+			<basic name="name"></basic>
+			<basic name="subDate"></basic>
+			
+			<one-to-many name="articles" mapped-by="author">
+				<!-- <join-column name="author_id"/> Définition unidirectionnel  -->
+			</one-to-many>
+			
+			<one-to-one name="adress">
+				<!-- nom de colonne référencée et nom de colonne origine -->
+				<join-column name="address_id" referenced-column-name="id"/>
+			</one-to-one>
+			
+		</attributes>
+	</entity>
+	<entity class="fr.gtm.blog.domain.Address">
+		<attributes>
+			<id name="id">
+				<generated-value strategy="IDENTITY"/>
+			</id>
+			<basic name="city"></basic>
+			<basic name="codepostal"></basic>
+			<basic name="line"></basic>
+		</attributes>
+	</entity>
 </entity-mappings>

@@ -14,6 +14,8 @@ public class Article implements Serializable {
 	private String title;
 
 	private String description;
+	
+	private Author author;
 
 	/**
 	 * Constructeur par défaut
@@ -58,6 +60,20 @@ public class Article implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	/**
+	 * @return the author
+	 */
+	public Author getAuthor() {
+		return author;
+	}
+
+	/**
+	 * @param author the author to set
+	 */
+	public void setAuthor(Author author) {
+		this.author = author;
 	}
 
 }
